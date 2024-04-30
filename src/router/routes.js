@@ -12,6 +12,33 @@ const routes = [
         }
     },
     {
+        path: '/login',
+        name: 'Login',
+        component: () => import('@/views/Login.vue'),
+        meta: {
+            requiresAuth: false,
+            title: '登录'
+        }
+    },
+    {
+        path: '/detect',
+        name: 'Detect',
+        component: () => import('@/views/Detect.vue'),
+        meta: {
+            requiresAuth: false,
+            title: '人脸识别'
+        }
+    },
+    {
+        path: '/controller',
+        name: 'Controller',
+        component: () => import('@/views/Controller.vue'),
+        meta: {
+            requiresAuth: true,
+            title: '后台管理系统'
+        }
+    },
+    {
         // 配置全局匹配，跳转到 Home
         path: '/:pathMatch(.*)*',
         redirect: '/'

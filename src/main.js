@@ -6,7 +6,7 @@ import 'element-plus/theme-chalk/dark/css-vars.css'
 // manual import ElMessage
 import 'element-plus/es/components/message/style/css'
 // router
-import router from '@/router/index.js'
+import router from '@/router/index.ts'
 
 // 创建vue实例
 const app = createApp(App);
