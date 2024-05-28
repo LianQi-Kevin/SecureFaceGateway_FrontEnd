@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Moon, Search, Setting, Sunny } from "@element-plus/icons-vue";
+import { Moon, Search, Setting, Sunny, Menu } from "@element-plus/icons-vue";
 import { useRouter } from "vue-router";
 import {useDark, useStorage, useToggle} from '@vueuse/core'
 import {getUserInfo} from "@/network/user";
@@ -17,6 +17,7 @@ const showUserInfo = ref<boolean>(false);
 
 provide("loginBoxVisible", loginVisible);
 provide("loggedIn", loggedIn);
+provide("userInfo", user_info);
 
 function refreshLoginStatus() {
   const userInfo_ = localStorage.getItem("userInfo");
@@ -59,6 +60,10 @@ onMounted(() => {
           <el-icon class="tab__icon"><Search /></el-icon>
           人脸识别
         </el-button>
+        <el-button class="detect" link size="large" @click="() => {router.push('/applications')}">
+          <el-icon class="tab__icon"><Menu /></el-icon>
+          应用中心
+        </el-button>
         <el-button class="controller" link size="large" @click="() => {router.push('/controller')}">
           <el-icon class="tab__icon"><Setting /></el-icon>
           数据管理
@@ -81,7 +86,7 @@ onMounted(() => {
 
       <el-button class="login" @click="() => {loginVisible = true}" v-if="!loggedIn">登录</el-button>
     </div>
-    <div class="home__main">
+    <div class="home__main" style="flex-grow: 2">
       <router-view/>
     </div>
   </div>
@@ -90,6 +95,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .content {
   width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
 }

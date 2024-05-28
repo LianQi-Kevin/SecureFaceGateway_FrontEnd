@@ -45,22 +45,20 @@ function cleanLogin(){
     </div>
     <el-form label-position="right" label-width="auto" v-model="props.user_info">
       <el-form-item label="用户名">
-        <el-input v-model="props.user_info.username" disabled></el-input>
+        <el-input v-model="props.user_info.username" readonly></el-input>
       </el-form-item>
       <el-form-item label="用户ID">
-        <el-input v-model="props.user_info.user_id" disabled></el-input>
+        <el-input v-model="props.user_info.user_id" readonly></el-input>
       </el-form-item>
       <el-form-item label="权限组">
-        <el-input v-model="props.user_info.role" disabled></el-input>
+        <el-input v-model="props.user_info.role" readonly></el-input>
       </el-form-item>
       <el-form-item >
         <div style="display: flex; justify-content: center; width: 100%">
           <el-button style="width: 100%" type="danger" plain @click="cleanLogin">Log Out</el-button>
         </div>
       </el-form-item>
-
     </el-form>
-
   </el-dialog>
 </template>
 

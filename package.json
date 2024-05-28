@@ -1,7 +1,7 @@
 {
   "name": "securefacegateway-frontend",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "main": "dist-electron/index.js",
   "author": {
@@ -32,7 +32,7 @@
       "target": [
         "portable"
       ],
-      "artifactName": "${productName}_${version}.${ext}"
+      "artifactName": "${productName}_v${version}.${ext}"
     },
     "compression": "maximum",
     "files": [
@@ -48,10 +48,12 @@
     "axios": "^1.6.8",
     "element-plus": "^2.5.1",
     "jwt-decode": "^3.1.2",
+    "uuid": "^9.0.1",
     "vue": "^3.3.11",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
+    "@types/uuid": "^9.0.8",
     "@vitejs/plugin-vue": "^4.5.2",
     "electron": "^30.0.1",
     "electron-builder": "^24.13.3",

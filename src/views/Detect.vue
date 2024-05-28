@@ -5,6 +5,7 @@ import {dataURLToFile} from '@/tools/image';
 import {faceFind} from "@/network/face";
 import type {faceFindResponse} from "@/network/face";
 import {ElMessage} from "element-plus";
+import { useThrottleFn } from '@vueuse/core'
 
 const currentCamera = ref<string>();
 const {videoInputs: cameras} = useDevicesList({
@@ -76,11 +77,15 @@ const {pause, resume} = useIntervalFn(() => {
         }
       }).catch((err) => {
         console.error(err)
-        ElMessage.error("人脸识别失败，请检查网络")
+        throttledFn()
       })
     }
   }
 }, 500);
+
+const throttledFn = useThrottleFn(() => {
+  ElMessage.error("人脸识别失败，请检查网络")
+}, 3000)
 
 // 监听detectFace, 变更时启停定时器
 watch(detectFace, (value) => {

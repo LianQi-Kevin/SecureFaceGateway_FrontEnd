@@ -18,6 +18,17 @@ const routes = [
         meta: {
             requiresAuth: false,
             title: '登录'
+        },
+        props: true
+    },
+    {
+        path: '/applications',
+        name: 'ApplicationCenter',
+        component: () => import('@/views/Application.vue'),
+        meta: {
+            requiresAuth: true,
+            requiresAdmin: false,
+            title: '应用中心'
         }
     },
     {
@@ -35,14 +46,37 @@ const routes = [
         component: () => import('@/views/Controller.vue'),
         meta: {
             requiresAuth: true,
+            requiresAdmin: true,
             title: '后台管理系统'
-        }
+        },
+        children: [
+            {
+                path: 'user',
+                name: 'UserControl',
+                component: () => import('@/views/controller/UserControl.vue'),
+                meta: {
+                    requiresAuth: true,
+                    requiresAdmin: true,
+                    title: '用户管理'
+                }
+            },
+            {
+                path: 'approval',
+                name: 'ApprovalCenter',
+                component: () => import('@/views/controller/ApprovalCenter.vue'),
+                meta: {
+                    requiresAuth: true,
+                    requiresAdmin: true,
+                    title: '审批管理'
+                }
+            },
+        ]
     },
-    {
-        // 配置全局匹配，跳转到 Home
-        path: '/:pathMatch(.*)*',
-        redirect: '/'
-    }
+    // {
+    //     // 配置全局匹配，跳转到 Home
+    //     path: '/:pathMatch(.*)*',
+    //     redirect: '/'
+    // }
 ];
 
 export default routes
